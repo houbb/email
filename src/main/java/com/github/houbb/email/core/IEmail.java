@@ -1,6 +1,8 @@
 package com.github.houbb.email.core;
 
 
+import com.github.houbb.email.support.context.SendContext;
+
 /**
  * 邮件接口
  * @author binbin.hou
@@ -10,13 +12,9 @@ public interface IEmail {
 
     /**
      * 发送邮件
-     * @param to 收件人
-     * @param subject 主题（可以截取内容的信息）
-     * @param content 内容
+     * @param context 发送上下文
      * @since 0.0.1
      */
-    void send(String to,
-              String subject,
-              String content);
+    void send(final SendContext context);
 
 }

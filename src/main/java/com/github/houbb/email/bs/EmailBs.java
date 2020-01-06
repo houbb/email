@@ -2,6 +2,7 @@ package com.github.houbb.email.bs;
 
 import com.github.houbb.email.core.IEmail;
 import com.github.houbb.email.core.impl.WangYi163Email;
+import com.github.houbb.email.support.context.SendContext;
 
 /**
  * 邮件发送引导类
@@ -11,10 +12,22 @@ import com.github.houbb.email.core.impl.WangYi163Email;
 public final class EmailBs {
 
     /**
-     * 收件人
-     * @since 0.0.1
+     * 收件人数组
+     * @since 0.0.2
      */
-    private String to;
+    private String[] toArray;
+
+    /**
+     * 抄送者数组
+     * @since 0.0.2
+     */
+    private String[] ccArray;
+
+    /**
+     * 秘密抄送者数组
+     * @since 0.0.2
+     */
+    private String[] bccArray;
 
     /**
      * 主题
@@ -67,15 +80,39 @@ public final class EmailBs {
      * （1）设置收件人
      * （2）直接发送邮件
      *
-     * @param to 收件人
+     * @param toArray 收件人列表
      * @return this
      * @since 0.0.1
      */
-    public EmailBs sendTo(final String to) {
-        this.to = to;
+    public EmailBs sendTo(final String ... toArray) {
+        this.toArray = toArray;
 
         // 直接开始发送
         this.send();
+
+        return this;
+    }
+
+    /**
+     * 设置抄送者
+     * @param ccArray 抄送者数组
+     * @return this
+     * @since 0.0.2
+     */
+    public EmailBs cc(final String ... ccArray) {
+        this.ccArray = ccArray;
+
+        return this;
+    }
+
+    /**
+     * 设置秘密抄送者
+     * @param bccArray 秘密抄送者数组
+     * @return this
+     * @since 0.0.2
+     */
+    public EmailBs bcc(final String ... bccArray) {
+        this.bccArray = bccArray;
 
         return this;
     }
@@ -85,7 +122,22 @@ public final class EmailBs {
      * @since 0.0.1
      */
     private void send() {
-        email.send(to, subject, content);
+        SendContext sendContext = buildSendContext();
+        email.send(sendContext);
+    }
+
+    /**
+     * 构建发送上下文
+     * @return 发送上下文
+     * @since 0.0.2
+     */
+    private SendContext buildSendContext() {
+        return SendContext.newInstance()
+                .subject(subject)
+                .content(content)
+                .toArray(toArray)
+                .ccArray(ccArray)
+                .bccArray(bccArray);
     }
 
 }

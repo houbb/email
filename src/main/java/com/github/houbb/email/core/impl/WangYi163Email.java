@@ -2,6 +2,8 @@ package com.github.houbb.email.core.impl;
 
 import com.github.houbb.email.core.IEmail;
 import com.github.houbb.email.exception.EmailRuntimeException;
+import com.github.houbb.email.support.context.SendContext;
+import com.github.houbb.email.util.AddressUtil;
 
 import javax.mail.*;
 import javax.mail.Message.RecipientType;
@@ -28,6 +30,11 @@ public class WangYi163Email implements IEmail {
      */
     private final String password;
 
+    /**
+     * 连接信息
+     * ps: 后续可以考虑池化。
+     * @since 0.0.1
+     */
     private final Session session;
 
     public WangYi163Email(String username, String password) {
@@ -37,21 +44,23 @@ public class WangYi163Email implements IEmail {
     }
 
     @Override
-    public void send(String to, String subject, String content) {
+    public void send(final SendContext context) {
         try {
             //2、创建邮件对象
             Message message = new MimeMessage(session);
             //2.1 设置发件人
             message.setFrom(new InternetAddress(username));
             //2.2 设置收件人
-            message.setRecipient(RecipientType.TO, new InternetAddress(to));
+            message.setRecipients(RecipientType.TO, AddressUtil.buildAddresses(context.toArray()));
             //2.3 设置抄送者（PS:没有这一条网易会认为这是一条垃圾短信，而发不出去）
-            message.setRecipient(RecipientType.CC,
-                    new InternetAddress(username));
+            message.setRecipients(RecipientType.CC, AddressUtil.buildAddresses(context.ccArray()));
+            // 设置秘密抄送者信息
+            message.setRecipients(RecipientType.BCC, AddressUtil.buildAddresses(context.bccArray()));
+
             //2.4 设置邮件的主题
-            message.setSubject(subject);
+            message.setSubject(context.subject());
             //2.5 设置邮件的内容
-            message.setContent("" + content + "", "text/html;charset=utf-8");
+            message.setContent(context.content(), "text/html;charset=utf-8");
 
             //3、发送邮件
             Transport.send(message);
