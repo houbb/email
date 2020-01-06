@@ -1,7 +1,7 @@
 package com.github.houbb.email.bs;
 
 import com.github.houbb.email.core.IEmail;
-import com.github.houbb.email.core.impl.WangYiEmail;
+import com.github.houbb.email.core.impl.WangYi163Email;
 
 /**
  * 邮件发送引导类
@@ -44,7 +44,7 @@ public final class EmailBs {
     public static EmailBs auth(final String username,
                                final String password) {
         EmailBs emailBs = new EmailBs();
-        emailBs.email = new WangYiEmail(username, password);
+        emailBs.email = new WangYi163Email(username, password);
         return emailBs;
     }
 

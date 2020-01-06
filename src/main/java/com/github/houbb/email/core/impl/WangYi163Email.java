@@ -10,10 +10,11 @@ import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
 /**
+ * 网易 163 邮箱实现
  * @author binbin.hou
  * @since 0.0.1
  */
-public class WangYiEmail implements IEmail {
+public class WangYi163Email implements IEmail {
 
     /**
      * 用户名
@@ -29,7 +30,7 @@ public class WangYiEmail implements IEmail {
 
     private final Session session;
 
-    public WangYiEmail(String username, String password) {
+    public WangYi163Email(String username, String password) {
         this.username = username;
         this.password = password;
         this.session = getSession();
