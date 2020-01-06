@@ -42,6 +42,8 @@ maven 3.x+
 
 ## 发送邮件
 
+此处密码为网易邮箱对应的授权码。
+
 ```java
 EmailBs.auth("xxx@163.com", "xxx")
         .content("Email for 2020 with bs", "新年好，我的老伙计")
