@@ -76,6 +76,17 @@ public final class EmailBs {
     }
 
     /**
+     * 邮件内容
+     * （1）主题默认为【无主题】，否则会被认为是垃圾邮件
+     * @param content 内容
+     * @return this
+     * @since 0.0.2
+     */
+    public EmailBs content(final String content) {
+        return content("无主题", content);
+    }
+
+    /**
      * 发送给收件人
      * （1）设置收件人
      * （2）直接发送邮件
