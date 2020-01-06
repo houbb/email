@@ -40,7 +40,7 @@ maven 3.x+
 </plugin>
 ```
 
-## 定义待加签的示例对象
+## 发送邮件
 
 ```java
 EmailBs.auth("xxx@163.com", "xxx")
