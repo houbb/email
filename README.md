@@ -1,6 +1,6 @@
 # email
 
-基于 java 注解生成加签验签 email。
+基于 java 实现的发送邮件的工具包，力求简单方便。
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.houbb/email/badge.svg)](http://mvnrepository.com/artifact/com.github.houbb/email)
 
@@ -10,11 +10,13 @@
 
 看了各种 email 工具感觉没有想象中方便。
 
-就自己实现一个。
+就自己实现一个，后续会陆续加入新的特性。
 
 ## 特性
 
 - Fluent 流式语法
+
+- 网易 163 邮箱的发送支持
 
 ## 更新记录
 
