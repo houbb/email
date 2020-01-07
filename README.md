@@ -1,6 +1,6 @@
 # Email
 
-[Email]() 是基于 java 实现的发送邮件的工具包，力求简单优雅。
+[Email](https://github.com/houbb/email) 是基于 java 实现的发送邮件的工具包，力求简单优雅。
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.houbb/email/badge.svg)](http://mvnrepository.com/artifact/com.github.houbb/email)
 
