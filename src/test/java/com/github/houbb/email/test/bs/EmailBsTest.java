@@ -18,9 +18,9 @@ public class EmailBsTest {
     @Test
     @Ignore
     public void wangYi163Test() {
-        EmailBs.auth("xxx@163.com", "xxx")
+        EmailBs.auth("xx@163.com", "xxx")
                 .content("自定义内容")
-                .sendTo("xxx@yy.com");
+                .sendTo("xx@qq.com");
     }
 
     /**

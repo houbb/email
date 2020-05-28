@@ -1,6 +1,8 @@
 package com.github.houbb.email.bs;
 
+import com.github.houbb.email.constant.EmailConst;
 import com.github.houbb.email.core.IEmail;
+import com.github.houbb.email.core.impl.Emails;
 import com.github.houbb.email.core.impl.WangYi163Email;
 import com.github.houbb.email.support.context.SendContext;
 
@@ -45,7 +47,21 @@ public final class EmailBs {
      * 邮件实现
      * @since 0.0.1
      */
-    private IEmail email;
+    private IEmail email = Emails.wangYi163();
+
+    /**
+     * 用户名
+     * @since 0.0.3
+     */
+    private String username;
+
+    /**
+     * 密码
+     * @since 0.0.3
+     */
+    private String password;
+
+    private EmailBs(){}
 
     /**
      * 登录验证
@@ -57,8 +73,25 @@ public final class EmailBs {
     public static EmailBs auth(final String username,
                                final String password) {
         EmailBs emailBs = new EmailBs();
-        emailBs.email = new WangYi163Email(username, password);
+        emailBs.username = username;
+        emailBs.password = password;
+
+        //1. 自动判断
+        if(username.endsWith(EmailConst.OUTLOOK_SUFFIX)) {
+            emailBs.email = Emails.outlook();
+        }
         return emailBs;
+    }
+
+    /**
+     * 设置邮箱信息
+     * @param email 邮箱
+     * @return 结果
+     * @since 0.0.1
+     */
+    public EmailBs email(IEmail email) {
+        this.email = email;
+        return this;
     }
 
     /**
@@ -148,7 +181,9 @@ public final class EmailBs {
                 .content(content)
                 .toArray(toArray)
                 .ccArray(ccArray)
-                .bccArray(bccArray);
+                .bccArray(bccArray)
+                .username(username)
+                .password(password);
     }
 
 }

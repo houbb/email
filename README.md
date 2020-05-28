@@ -14,15 +14,17 @@
 
 ## 特性
 
-- Fluent 流式语法
+- fluent 流式语法
 
 - 网易 163 邮箱的发送支持
+
+- 支持微软 outlook 邮箱发送
 
 - 支持发送给多个收件人，多个（秘密）抄送者
 
 ## 更新记录
 
-> [更新记录](doc/CHANGE_LOG.md)
+> [更新记录](CHANGE_LOG.md)
 
 # 快速开始
 
@@ -38,7 +40,7 @@ maven 3.x+
 <plugin>
     <groupId>com.github.houbb</groupId>
     <artifactId>email</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
 </plugin>
 ```
 

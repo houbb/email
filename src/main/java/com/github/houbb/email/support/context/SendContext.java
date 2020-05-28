@@ -10,6 +10,18 @@ import java.util.Arrays;
 public class SendContext {
 
     /**
+     * 用户名
+     * @since 0.0.3
+     */
+    private String username;
+
+    /**
+     * 密码
+     * @since 0.0.3
+     */
+    private String password;
+
+    /**
      * 收件人数组
      * @since 0.0.2
      */
@@ -88,10 +100,30 @@ public class SendContext {
         return this;
     }
 
+    public String username() {
+        return username;
+    }
+
+    public SendContext username(String username) {
+        this.username = username;
+        return this;
+    }
+
+    public String password() {
+        return password;
+    }
+
+    public SendContext password(String password) {
+        this.password = password;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "SendContext{" +
-                "toArray=" + Arrays.toString(toArray) +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", toArray=" + Arrays.toString(toArray) +
                 ", ccArray=" + Arrays.toString(ccArray) +
                 ", bccArray=" + Arrays.toString(bccArray) +
                 ", subject='" + subject + '\'' +

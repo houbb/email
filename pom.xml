@@ -6,7 +6,7 @@
 
     <groupId>com.github.houbb</groupId>
     <artifactId>email</artifactId>
-    <version>0.0.3-SNAPSHOT</version>
+    <version>0.0.3</version>
 
     <properties>
         <!--============================== All Plugins START ==============================-->
@@ -36,6 +36,11 @@
             <!--============================== SELF ==============================-->
 
             <!--============================== INTER ==============================-->
+            <dependency>
+                <groupId>com.github.houbb</groupId>
+                <artifactId>heaven</artifactId>
+                <version>0.1.105</version>
+            </dependency>
 
             <!--============================== OTHER ==============================-->
             <dependency>
@@ -59,6 +64,10 @@
         <!--============================== SELF ==============================-->
 
         <!--============================== INTER ==============================-->
+        <dependency>
+            <groupId>com.github.houbb</groupId>
+            <artifactId>heaven</artifactId>
+        </dependency>
 
         <!--============================== OTHER ==============================-->
         <dependency>
