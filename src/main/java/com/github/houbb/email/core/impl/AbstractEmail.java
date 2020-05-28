@@ -53,6 +53,8 @@ public abstract class AbstractEmail implements IEmail {
 
     /**
      * 获取认证信息
+     * @param username 账户
+     * @param password 密码
      * @return 认证信息
      * @since 0.0.3
      */
