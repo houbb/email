@@ -37,11 +37,11 @@ maven 3.x+
 ## 引入
 
 ```xml
-<plugin>
+<dependency>
     <groupId>com.github.houbb</groupId>
     <artifactId>email</artifactId>
     <version>0.0.3</version>
-</plugin>
+</dependency>
 ```
 
 ## 发送邮件
